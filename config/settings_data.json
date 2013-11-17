@@ -1,0 +1,21 @@
+{
+  "presets": {
+    "Default": {
+      "customer_layout": "theme",
+      "opening-mon": "9:30am - 5:00pm",
+      "meta-opening-mon": "9:00-17:00",
+      "opening-tue": "9:30am - 5:00pm",
+      "meta-opening-tue": "9:00-17:00",
+      "opening-wed": "9:30am - 5:00pm",
+      "meta-opening-wed": "9:00-17:00",
+      "opening-thu": "9:30am - 5:00pm",
+      "meta-opening-thu": "9:00-17:00",
+      "opening-fri": "9:30am - 5:00pm",
+      "meta-opening-fri": "9:00-17:00",
+      "opening-sat": "9:30am - 3:00pm",
+      "meta-opening-sat": "9:00-15:00",
+      "opening-sun": "Closed",
+      "opening-active": false
+    }
+  }
+}

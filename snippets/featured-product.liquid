@@ -1,0 +1,12 @@
+<section class="featured-product">
+    <div class="image-wrapper">
+    	<a href="{{ linklists.featured-product.links.first.url}}">
+        <img src="{{linklists.featured-product.links.first.object.featured_image | product_img_url: 'large'}}" alt="" />
+       </a>
+    </div>
+    <div class="featured-product-content">
+        <h1>{{settings.featured-heading}}</h1>
+        <p>{{settings.featured-text}}</p>
+        <a href="{{ linklists.featured-product.links.first.url}}">View Now</a>
+    </div>
+</section>

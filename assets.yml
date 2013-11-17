@@ -1,0 +1,14 @@
+package_assets:   on
+embed_assets:     off
+compress_assets:  on
+gzip_assets:      off
+javascript_compressor: uglifier
+
+javascripts:
+  main.min:
+    - js/plugins.js
+    - js/main.js
+
+stylesheets:
+  main.min:
+    - compiled-css/main.css

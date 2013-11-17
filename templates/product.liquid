@@ -1,0 +1,74 @@
+<article class="product-page hentry" id="{{product.handle}}" itemscope itemtype="http://schema.org/Product">
+
+
+    <!-- TODO: Insert Breadcrumb here -->
+
+
+    <section>
+	    {% for image in product.images %}
+	        {% if forloop.first %}
+        		<div class="image-large">
+        			<img src="{{ image | product_img_url: 'master' }}" alt="{{product.title}} from {{ shop.name }}" />
+        			<div class="image-zoom"></div>
+        		</div>
+        		<a itemprop="image" class="image-small product-image-1" href="{{ image | product_img_url: 'master' }}">
+        			<img src="{{ image | product_img_url: 'master' }}" alt="{{product.title}} from {{ shop.name }}" />
+        		</a>
+	        {% else %}
+		        <a itemprop="image" class="product-image-small product-image-{{forloop.index}}" href="{{ image | product_img_url: 'master' }}">
+        			<img src="{{ image | product_img_url: 'master' }}" alt="{{product.title}} from {{ shop.name }}" />
+        		</a>
+        	{% endif %}
+    	{% endfor %}
+	</section>
+
+  <section class="product-details">
+      <h2 itemprop="name">{{ product.title }}</h2>
+
+      <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+				{% if product.compare_at_price_min > 0 %}
+					<p class="product-price product-price-sale"><del>Was {{ product.compare_at_price_min | money }}</del><span itemprop="price">{{ product.price_min | money }}</span></p>
+				{% else %}
+         <p class="product-price ">Our Price <span itemprop="price">{{ product.price_min | money }}</span></p>
+				{% endif %}
+      </div>
+
+      <p class="description" itemprop="description">
+        {{ product.description }}
+      </p>
+
+
+
+      {% if product.available %}
+        <span itemprop="availability" href="http://schema.org/InStock" style="visability: hidden;">In Stock</span>
+        <form id="add_to_basket" action="/cart/add" method="post">
+        {% if product.variants.size > 1 %}
+
+				   <select name="id">
+				     <option disabled selected value="">Choose your options&#8230;</option>
+					   {% for variant in product.variants %}
+						   {% if variant.available == true %}
+						     <option value="{{ variant.id }}" data-price="{{ variant.price | money }}">{{ variant.title }}</option>
+						   {% endif %}
+					   {% endfor %}
+				   </select>
+
+			    {% else %}
+
+  			  <select name="id">
+  					{% for variant in product.variants %}
+  						{% if variant.available == true %}
+  							<option value="{{ variant.id }}" data-price="{{ variant.price | money }}">{{ variant.title }}</option>
+  						{% endif %}
+  					{% endfor %}
+  				</select>
+
+  			{% endif %}
+        <input {% if product.variants.size > 1 %}disabled {% endif %}type="submit" value="Buy Now!"/>
+      </form>
+    {% else %}
+		  <p>Sorry, we're out of stock.</p>
+	  {% endif %}
+
+	</section>
+</article>

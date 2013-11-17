@@ -1,0 +1,76 @@
+{% if settings.opening-active %}
+	<table class="opening-hours">
+	  <caption>Opening Hours</caption>
+	  <thead>
+	      <tr>
+	          <th>Day</th>
+	          <th>Opening Hours</th>
+	      </tr>
+	  </thead>
+	  <tbody>
+			<tr>
+				<td>Monday</td>
+				<td>
+          {{ settings.opening-mon | strip_html }}
+          {% if settings.meta-opening-mon %}
+            <meta itemprop="openingHours" content="Mo {{settings.meta-opening-mon}}" />
+          {% endif %}
+       </td>
+			</tr>
+			<tr>
+				<td>Tuesday</td>
+				<td>
+          {{ settings.opening-tue | strip_html }}
+          {% if settings.meta-opening-tue %}
+            <meta itemprop="openingHours" content="Tu {{settings.meta-opening-tue}}" />
+          {% endif %}
+       </td>
+			</tr>
+			<tr>
+				<td>Wednesday</td>
+				<td>
+          {{ settings.opening-wed | strip_html }}
+          {% if settings.meta-opening-wed %}
+            <meta itemprop="openingHours" content="We {{settings.meta-opening-wed}}" />
+          {% endif %}
+       </td>
+			</tr>
+			<tr>
+				<td>Thursday</td>
+				<td>
+          {{ settings.opening-thu | strip_html }}
+          {% if settings.meta-opening-thu %}
+            <meta itemprop="openingHours" content="Th {{settings.meta-opening-thu}}" />
+          {% endif %}
+       </td>
+			</tr>
+			<tr>
+				<td>Friday</td>
+				<td>
+          {{ settings.opening-fri | strip_html }}
+          {% if settings.meta-opening-fri %}
+            <meta itemprop="openingHours" content="Fr {{settings.meta-opening-fri}}" />
+          {% endif %}
+       </td>
+			</tr>
+			<tr>
+				<td>Saturday</td>
+				<td>
+          {{ settings.opening-sat | strip_html }}
+          {% if settings.meta-opening-sat %}
+            <meta itemprop="openingHours" content="Sa {{settings.meta-opening-sat}}" />
+          {% endif %}
+       </td>
+			</tr>
+			<tr>
+				<td>Sunday</td>
+				<td>
+          {{ settings.opening-sun | strip_html }}
+          {% if settings.meta-opening-sun %}
+            <meta itemprop="openingHours" content="Su {{settings.meta-opening-sun}}" />
+          {% endif %}
+       </td>
+			</tr>
+	  </tbody>
+	</table>
+{% endif %}
