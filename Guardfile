@@ -17,37 +17,8 @@ guard :jammit,
 end
 
 
-
-
-
-
-require 'guard/plugin'
-
-module ::Guard
-  class ShopifyTheme < ::Guard::Plugin
-    def run_all
-    end
-
-    def start
-      puts "Watching using shopify_theme gem"
-      #system "theme open"
-    end
-
-    def run_on_changes(paths)
-      paths.each do |path|
-        system "theme upload #{path}"
-      end
-    end
-
-    def run_on_removals(paths)
-      paths.each do |path|
-        system "theme remove #{path}"
-      end
-    end
-  end
-end
-
-guard :shopify_theme do
+# Upload Changes to Shopify
+guard :shopifytheme do
   watch(/assets\/.*/)
   watch(/config\/.*/)
   watch(/layout\/.*/)
