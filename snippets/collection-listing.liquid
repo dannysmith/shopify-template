@@ -6,15 +6,17 @@
 <section class="product-grid">
 	{% for collection in collections %}
 			<a class="product-box" href="{{collection.url}}">
-  				<div class="image-wrapper">
-            {% if collection.image %}
-              <img src="{{collection.image.src | collection_img_url: 'large'}}" alt="{{collection.title}} - {{ shop.name}}">
-            {% else %}
-				       <img class="nopin" src="{{ 'page-search-result.jpg' | asset_url }}" alt="{{ collection.description | strip_html | truncate: 75 }} click for more information" />
-            {% endif %}
-  				</div>
+          {% if collection.image %}
+            <div class="image-wrapper" style="background:url({{collection.image.src | collection_img_url: 'medium'}});">
+              <img src="{{collection.image.src | collection_img_url: 'medium'}}" alt="{{collection.title}} - {{ shop.name}}">
+            </div>
+          {% else %}
+            <div class="image-wrapper" style="background:url({{ 'placeholder-image.jpg' | asset_url }});">
+			        <img src="{{ 'placeholder-image.jpg' | asset_url }}" alt="{{ collection.description | strip_html | truncate: 75 }} click for more information" />
+            </div>
+          {% endif %}
 				<p title="{{ collection.description | strip_html }}">{{collection.title | strip_html}}</p>
-        <div class="product-box-price">View collection</div>
+        <div class="price">View</div>
 			</a>
 	{% endfor %}
 </section>

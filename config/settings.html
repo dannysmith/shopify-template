@@ -1,4 +1,4 @@
-<h2>Generic SEO</h2>
+<!-- <h2>Generic SEO</h2>
 <p>The following values will be used for your pages titles and meta descriptions:</p>
 <table>
   <thead>
@@ -34,12 +34,113 @@
     </tr>
   </tbody>
 </table>
-<br /><br />
+<br /><br /> -->
+<fieldset>
+  <legend>General</legend>
 
-<p>
-  <label for="meta-keywords">Meta Keywords</label>
-  <textarea id="meta-keywords" name="meta-keywords" value=""></textarea>
-</p>
+  <h3>Logo &amp; Header Options</h3>
+  <table>
+    <tr>
+      <td><label for="tagline">Shop tagline</label></td>
+      <td><input type="text" id="tagline" name="tagline" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><small>This will be displayed in the header of your shop.</small></td>
+    </tr>
+    <tr>
+      <td><label for="use_logo">Use Custom Logo?</label></td>
+      <td><input type="checkbox" id="use_logo" name="use_logo" /></td>
+    </tr>
+    <tr>
+      <td><label for="logo_image">Custom Logo</label></td>
+      <td><input type="file" name="logo.png" id="logo_image" data-max-width="1500" data-max-height="800" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><small>Maximum logo dimensions are 1500px wide by 800px high.<br />Your uploaded file will be resized to fit within those constraints.</small></td>
+    </tr>
+  </table>
+
+
+  <h3>Pagination Options</h3>
+  <table>
+    <tr>
+      <td><label for="pagination">Number of products per page</label></td>
+      <td><input type="number" id="pagination" name="pagination" value="20"/></td>
+    </tr>
+    <tr>
+      <td><label for="blog-pagination">Number of blog articles per page</label></td>
+      <td><input type="number" id="blog-pagination" name="blog-pagination" value="5"/></td>
+    </tr>
+    <tr>
+      <td><label for="comments-pagination">Number of comments per page</label></td>
+      <td><input type="number" id="comments-pagination" name="comments-pagination" value="50"/></td>
+    </tr>
+  </table>
+
+  <h3>SEO Options</h3>
+  <table>
+    <tr>
+      <td><label for="meta-keywords">Meta Keywords</label></td>
+      <td><textarea id="meta-keywords" name="meta-keywords" value=""></textarea></td>
+    </tr>
+  </table>
+
+  <h3>Social Media Options</h3>
+  <table>
+    <tr>
+      <td><label for="facebook-admin-id">Facebook Admin ID</label></td>
+      <td><input type="text" id="facebook-admin-id" name="facebook-admin-id" /></td>
+    </tr>
+    <tr>
+      <td><label for="twitter_username">Twitter Username</label></td>
+      <td><input type="text" id="twitter_username" name="twitter_username" /></td>
+    </tr>
+  </table>
+</fieldset>
+
+
+
+
+<fieldset>
+  <legend>Home Page</legend>
+
+  <h3>Notice</h3>
+  <table>
+    <tr>
+      <td><label for="homepage-notice-title">Heading</label></td>
+      <td><input type="text" id="homepage-notice-title" name="homepage-notice-title" /></td>
+    </tr>
+    <tr>
+      <td><label for="homepage-notice-text">Notice Text</label></td>
+      <td><textarea type="text" id="homepage-notice-text" name="homepage-notice-text"></textarea></td>
+    </tr>
+  </table>
+</fieldset>
+
+
+<fieldset>
+  <legend>SECTION TTLE</legend>
+
+  <h3>Subsection Title</h3>
+  <table>
+    <tr>
+      <td><label for="item">Label</label></td>
+      <td><input type="text" id="item" name="item" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><small>Notes go here.</small></td>
+    </tr>
+  </table>
+</fieldset>
+
+
+
+
+
+
+
+
+
 
 
 

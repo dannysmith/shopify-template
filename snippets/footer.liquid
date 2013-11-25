@@ -1,7 +1,17 @@
 <!--~~~~~~~~~~~~~~~~~~~~ Footer Snippet ~~~~~~~~~~~~~~~~~~~~-->
 
 <footer>
-    <ul>
-        <li>&copy; Copyright 2012 {{ shop.name }}. Website by <a href="http://manyhatsdesign.com">Manyhats Design</a>, UK.</li>
-    </ul>
+	 {% if linklists.footer.links.size > 0 %}
+      <ul role="navigation">
+	      {% for link in linklists.footer.links %}
+	      <li>
+	        <a href="{{ link.url }}" title="{{ link.title }}"{% if link.active %} class="active"{% endif %}>{{ link.title }}</a>
+	      </li>
+	      {% endfor %}
+      </ul>
+      {% endif %}
+
+    <div class="pagemeta">
+        <p>&copy; Copyright 2012 {{ shop.name }}. Based on <a href="https://github.com/dannysmith/shopify-template">a template</a> by <a href="http://dasmith.co.uk">Danny Smith</a>.</p>
+    </div>
 </footer>

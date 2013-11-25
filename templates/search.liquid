@@ -1,39 +1,36 @@
-{% paginate search.results by 20 %}
+{% if search.performed %}
 
-{% if search.results_count == 0 %}
-  <h2>Sorry, nothing matches that!</h2>
-  <p>try searching again</p>
+
+  {% paginate search.results by settings.pagination %}
+
+  {% if search.results_count == 0 %}
+    <h2>Sorry, nothing matches that!</h2>
+    <p>try searching again</p>
+  {% else %}
+
+    <h1>Search Results for {{ search.terms }}</h1>
+    <p>{{ search.results_count }} results</p>
+
+    <section class="product-grid">
+  	  {% for product in search.results %}
+        {% include 'product-box' %}
+  	  {% endfor %}
+    </section>
+
+    	<div id="pagination">
+    		{{ paginate | default_pagination }}
+    	</div>
+
+  {% endif %}
+  {% endpaginate %}
+
 {% else %}
 
-  <h1>Search Results for {{ search.terms }}</h1>
-  <p>{{ search.results_count }} results</p>
-
-  <section class="product-grid">
-	  {% for product in search.results %}
-			<a class="product-box" href="{{product.url}}">
-        {% if product.featured_image %}
-  				<div class="image-wrapper">
-  					<img src="{{ product.featured_image | product_img_url: 'medium'}}" alt="{{ product.description | strip_html | truncate: 75 }}" />
-  				</div>
-        {% endif %}
-
-				<p title="{{ product.description | strip_html }}">{{product.title | strip_html }}</p>
-				{% if product.compare_at_price_min > 0 %}
-					<div class="product-box-price product-box-price-sale">{{ product.price_min | money }}</div>
-				{% else %}
-         <div class="product-box-price">{{ product.price_min | money }}</div>
-				{% endif %}
-			</a>
-	{% endfor %}
-
-  </section>
-
-  {% if search.results_count > 20 %}
-  	<div id="pagination">
-  		{{ paginate | default_pagination }}
-  	</div>
-  {% endif %}
+  <form action="/search" method="get" class="search-form" role="search">
+    <p>
+      <input type="text" name="q" value="{{ search.terms | escape }}" />
+      <input type="submit" value="Search store..." />
+    </p>
+  </form>
 
 {% endif %}
-{% endpaginate %}
-

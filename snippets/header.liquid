@@ -1,0 +1,44 @@
+  <!--~~~~~~~~~~~~~~~~~~~~ Header ~~~~~~~~~~~~~~~~~~~~-->
+
+  <header role="banner">
+		<hgroup>
+      {% if settings.use_logo %}
+      <a id="logo" href="/" role="banner">
+        {{ 'logo.png' | asset_url | img_tag: shop.name }}
+      </a><!-- #logo -->
+      {% endif %}
+      <h1 id="site-title"{% if settings.use_logo %} class="hidden"{% endif %}>
+        <a href="/">{{ shop.name }}</a>
+      </h1>
+      <h2>{{ settings.tagline }}</h2>
+		</hgroup>
+
+
+    <!--~~~~~~~~~~~~~~~~~~~~ Basket ~~~~~~~~~~~~~~~~~~~~-->
+
+		<a href="/cart">
+    			<p>your basket</p>
+  				<p class="basket-price">{{ cart.total_price | money }}</p>
+  				<p class="basket-items">({{ cart.item_count }} {{ cart.item_count | pluralize: "item", "items" }})</p>
+		</a>
+
+    <!--~~~~~~~~~~~~~~~~~~~~ Log in / Account / Signup ~~~~~~~~~~~~~~~~~~~~-->
+    {% if shop.customer_accounts_enabled %}
+    <div class="account-links">
+    	{% if customer %}
+        <a href="/account">Account</a>
+        {{ "Log out" | customer_logout_link }}
+     {% else %}
+        {{ "Log in" | customer_login_link }}
+     {% endif %}
+    </div>
+    {% endif %}
+
+    <!--~~~~~~~~~~~~~~~~~~~~ Search Form ~~~~~~~~~~~~~~~~~~~~-->
+
+		<form class="search-form" id="search" action="/search" accept-charset="utf-8">
+			<input type="search" id="search_text" name="q" placeholder="Search..." value="{% if search and search.results.first.price %}{{ search.terms }}{% endif %}">
+			<input id="search_submit" type="submit" border="0" value="Search" alt="Submit Search"/>
+		</form>
+
+	</header>

@@ -1,0 +1,17 @@
+<a class="product-box" href="{{product.url}}">
+  {% if product.featured_image %}
+		<div class="image-wrapper" style="background:url({{ product.featured_image | product_img_url: 'medium'}});">
+			<img src="{{ product.featured_image | product_img_url: 'medium'}}" alt="{{ product.description | strip_html | truncate: 75 }}" />
+		</div>
+	{% else %}
+		<div class="image-wrapper" style="background:url({{ 'placeholder-image.jpg' | asset_url }});">
+			<img src="{{ 'placeholder-image.jpg' | asset_url }}" alt="{{ product.description | strip_html | truncate: 75 }}" />
+		</div>
+	{% endif %}
+	<p title="{{ product.description | strip_html }}">{{product.title | strip_html}}</p>
+	{% if product.compare_at_price_min > 0 %}
+		<div class="saleprice">{{ product.price_min | money }}</div>
+	{% else %}
+   <div class="price">{{ product.price_min | money }}</div>
+	{% endif %}
+</a>

@@ -3,11 +3,26 @@
 
 ## Setup
 
-- Clone the repo and run 'bundle install'
-- Run 'bourbon install' and 'neat install'
-- Run 'theme configure api_key password store_url' (https://github.com/Shopify/shopify_theme)
-- Run 'guard'
+To download and set up:
+````
+git clone https://github.com/dannysmith/shopify-template
+bundle install
+bourbon install --path scss/ && neat install --path scss/
+theme configure <API_KEY> <PASSWORD> <STORE_URL>
+````
+See [here](https://github.com/Shopify/shopify_theme) for more information on configuring shopify_theme.
 
+Then to compile/run:
+````
+guard
+````
+
+# Updating the Libraries
+
+````
+bourbon update --path scss/
+neat update --path scss/
+````
 
 # TODO
 

@@ -1,78 +1,39 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-
   {% include 'head' %}
-	{{ content_for_header }}
+  {{ content_for_header }}
 </head>
-<body>
+
+<body id="{{ page_title | handle }}"  class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}">
+
   <!--~~~~~~~~~~~~~~~~~~~~ Handle old browser stuff ~~~~~~~~~~~~~~~~~~~~-->
 
   <!--[if lt IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
+
   <noscript>
       <h2 style="text-align: center;">You need to enable JavaScript to get the full {{ shop.name }} experience!</h2>
   </noscript>
 
 
-  <!--~~~~~~~~~~~~~~~~~~~~ Header ~~~~~~~~~~~~~~~~~~~~-->
+  {% include 'header' %}
 
-  <header role="banner">
-		<hgroup>
-			<a href="/"><h1>{{ shop.name }}</h1></a>
-      <h2>{{ settings.tagline }}</h2>
-		</hgroup>
-
-
-    <!--~~~~~~~~~~~~~~~~~~~~ Basket ~~~~~~~~~~~~~~~~~~~~-->
-
-		<a href="/cart">
-    			<p>your basket</p>
-  				<p class="basket-price">{{ cart.total_price | money }}</p>
-  				<p class="basket-items">({{ cart.item_count }} {{ cart.item_count | pluralize: "item", "items" }})</p>
-		</a>
-
-    <!--~~~~~~~~~~~~~~~~~~~~ Log in / Account / Signup ~~~~~~~~~~~~~~~~~~~~-->
-
-    <div class="account-links">
-    	{% if customer %}
-        <a href="/account">Account</a>
-        {{ "Log out" | customer_logout_link }}
-     {% else %}
-        {{ "Log in" | customer_login_link }}
-     {% endif %}
-    </div>
-
-    <!--~~~~~~~~~~~~~~~~~~~~ Search Form ~~~~~~~~~~~~~~~~~~~~-->
-
-		<form class="form-search" id="search" action="/search" accept-charset="utf-8">
-			<input type="search" id="search_text" name="q" placeholder="Search...">
-			<input id="search_submit" type="submit" border="0" value="Go" style="display: none;" alt="Submit Search"/>
-		</form>
-
-	</header>
-
-
-
+  {% include 'navigation' %}
 
   <div id="wrapper" role="main">
-
-    {% include 'navigation' %}
 
     {% if template == 'list-collections' %}
       {% include 'collection-listing' %}
     {% else %}
       {{ content_for_layout }}
     {% endif %}
-
-
-    {% include 'footer' %}
-
   </div><!-- /wrapper -->
 
+  {% include 'footer' %}
 
 
-{% include 'scripts' %}
+  {% include 'scripts' %}
 </body>
 </html>
