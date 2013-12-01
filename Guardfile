@@ -16,6 +16,21 @@ guard :jammit,
     watch 'assets.yml'
 end
 
+require 'guard/plugin'
+module ::Guard
+  class Convertliquid < ::Guard::Plugin
+    def run_on_changes(paths)
+      paths.each do |path|
+        puts "Updating #{path}.liquid"
+        system "cp #{path} #{path}.liquid"
+      end
+    end
+  end
+end
+
+guard :convertliquid do
+  watch(/assets\/.*\.css$/)
+end
 
 # Upload Changes to Shopify
 guard :shopifytheme do

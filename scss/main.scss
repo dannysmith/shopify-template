@@ -1,18 +1,20 @@
 //Import bourbon
 @import "bourbon/bourbon";
 @import "neat/neat";
+@import "fontawesome/font-awesome"; //Comment this out if you're not using Fontawesome
 
 //Import mixin Library
 @import "/Users/danny/Dropbox/Manyhats/Internal/Code Templates/mixin-library/mixins.scss";
 
-// Import basic Styles
+// Import basic Styles & layout
 @import "base/normalize";
+@import "base/variables";
 @import "base/base";
+@import "base/typography";
 @import "base/layout";
 
-// Import Modules and layouts here:
-
-
+// Import Modules:
+@import "modules";
 
 // Import Print & Helpers
 @import "base/helpers";

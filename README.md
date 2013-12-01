@@ -16,15 +16,30 @@ Then to compile/run:
 ````
 guard
 ````
+## Usage
 
-# Updating the Libraries
+- The folder structure
+- How to add JavaScripts
+- How to add CSS Modules
+- How some of the clever Shopify stuff works
+
+### Creating a new CSS module
+
+You can create a new CSS Module with:
+
+````
+rake module:create my clever module
+````
+This will create `scss/modules/my-clever-module.scss`, where you should add your styles.
+
+## Updating the Libraries
 
 ````
 bourbon update --path scss/
 neat update --path scss/
 ````
 
-# TODO
+## TODO
 
 - Style the header
 - Add Menu & Style
