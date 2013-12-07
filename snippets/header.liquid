@@ -8,7 +8,7 @@
       </a><!-- #logo -->
       {% endif %}
       <h1 id="site-title"{% if settings.use_logo %} class="hidden"{% endif %}>
-        <a href="/">{{ shop.name }}</a>
+        <a href="{{ shop.url }}">{{ shop.name }}</a>
       </h1>
       <h2>{{ settings.tagline }}</h2>
 		</hgroup>

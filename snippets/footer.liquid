@@ -1,6 +1,56 @@
 <!--~~~~~~~~~~~~~~~~~~~~ Footer Snippet ~~~~~~~~~~~~~~~~~~~~-->
 
 <footer>
+	<div class="newsletter">
+	  {% if settings.newsletter-enabled %}
+	    <h4 class="title">{{ settings.newsletter-heading }}</h4>
+
+	    {% if settings.newsletter-provider == 'mailchimp' %}
+	      <form action="{{ settings.mailchimp_link }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="contact-form" target="_blank">
+	        <input type="email" value="" name="EMAIL" class="required email" id="contact_email" placeholder="Enter your email address...">
+	        <input type="submit" value="Sign Up" id="sign_up" name="subscribe" id="mc-embedded-subscribe">
+	      </form>
+	    {% else %}
+
+	      {% form 'customer' %}
+	         {% if form.posted_successfully? %}
+	           <p>Thanks!</p>
+	         {% elsif form.errors %}
+	           {% for field in form.errors %}
+	             <p>{{ field }} - {{ form.errors.messages[field] }}</p>
+	           {% endfor %}
+	         {% endif %}
+
+	         <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
+	         <input type="hidden" id="newsletter-first-name" name="contact[first_name]" value="Newsletter" />
+	         <input type="hidden" id="newsletter-last-name" name="contact[last_name]" value="Subscriber" />
+	         <input type="email" id="contact_email" name="contact[email]" required pattern="[^ @]*@[^ @]*" placeholder="Enter your email..." />
+	         <input type='submit' id="sign_up" value="Sign Up" />
+	       {% endform %}
+
+	    {% endif %}
+
+	    {% if settings.newsletter-description != blank %}
+	      <p>{{ settings.newsletter-description }}</p>
+	    {% endif %}
+	  {% endif %}
+	</div>
+
+
+
+	<div class="payment-options">
+    {% if settings.use-paypal %}<img src="{{ 'cc-paypal.png' | asset_url }}" alt="PayPal" />{% endif %}
+    {% if settings.use-visa %}<img src="{{ 'cc-visa.png' | asset_url }}" alt="Visa" />{% endif %}
+    {% if settings.use-mastercard %}<img src="{{ 'cc-mastercard.png' | asset_url }}" alt="MasterCard" />{% endif %}
+    {% if settings.use-maestro %}<img src="{{ 'cc-maestro.png' | asset_url }}" alt="Maestro" />{% endif %}
+    {% if settings.use-amex %}<img src="{{ 'cc-amex.png' | asset_url }}" alt="American Express" />{% endif %}
+    {% if settings.use-google %}<img src="{{ 'cc-google.png' | asset_url }}" alt="Google Payments" />{% endif %}
+    {% if settings.use-solo %}<img src="{{ 'cc-solo.png' | asset_url }}" alt="Solo" />{% endif %}
+    {% if settings.use-cash %}<img src="{{ 'cc-money.png' | asset_url }}" alt="Cash" />{% endif %}
+	</div>
+
+
+
 	 {% if linklists.footer.links.size > 0 %}
       <ul role="navigation">
 	      {% for link in linklists.footer.links %}
@@ -12,6 +62,6 @@
       {% endif %}
 
     <div class="pagemeta">
-        <p>&copy; Copyright 2012 {{ shop.name }}. Based on <a href="https://github.com/dannysmith/shopify-template">a template</a> by <a href="http://dasmith.co.uk">Danny Smith</a>.</p>
+        <p>&copy; {{ "now" | date: "%Y" }} {{ shop.name }}. Based on <a href="https://github.com/dannysmith/shopify-template">a template</a> by <a href="http://danny.is">Danny Smith</a>.</p>
     </div>
 </footer>
